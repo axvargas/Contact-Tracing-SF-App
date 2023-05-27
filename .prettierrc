@@ -1,13 +1,31 @@
 {
+  "tabWidth": 2,
+  "useTabs": false,
   "trailingComma": "none",
   "overrides": [
     {
       "files": "**/lwc/**/*.html",
-      "options": { "parser": "lwc" }
+      "options": {
+        "parser": "lwc"
+      }
     },
     {
       "files": "*.{cmp,page,component}",
-      "options": { "parser": "html" }
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": " * . {trigger,cls}",
+      "options": {
+        "parser": "apex"
+      }
+    },
+    {
+      "files": " * .{apex}",
+      "options": {
+        "parser": "apex-anonymous"
+      }
     }
   ]
 }

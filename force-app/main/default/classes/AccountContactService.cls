@@ -1,9 +1,7 @@
 public with sharing class AccountContactService {
   public static Map<Id, Account> countActiveContacts(Set<Id> accountIds) {
     Map<Id, Account> accountsWithInfoMap = new Map<Id, Account>();
-    if (accountIds == null || accountIds.isEmpty()) {
-      return accountsWithInfoMap;
-    }
+
     List<AggregateResult> results = [
       SELECT AccountId, COUNT(Id) ActiveContactsCount
       FROM Contact
@@ -11,9 +9,7 @@ public with sharing class AccountContactService {
       WITH SECURITY_ENFORCED
       GROUP BY AccountId
     ];
-    if (results == null || results.isEmpty()) {
-      return accountsWithInfoMap;
-    }
+
     for (AggregateResult result : results) {
       accountsWithInfoMap.put(
         (Id) result.get('AccountId'),

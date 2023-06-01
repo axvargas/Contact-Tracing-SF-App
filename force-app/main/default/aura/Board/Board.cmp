@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+  <!-- Attributes -->
+  <aura:attribute name="gameMode" type="String" default="medium" />
+  <aura:attribute name="clickCount" type="Integer" default="0" access="private" />
+  <aura:attribute name="randomWord" type="String" />
+  <aura:attribute name="words" type="List" />
+  <aura:attribute name="blockSize" type="Integer" access="private" />
+  <!-- Handlers -->
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <!-- <aura:handler name="render" value="{!this}" action="{!c.doRender}" /> -->
+  <div class="board">
+    <lightning:layout>
+      <lightning:layoutItem padding="around-small">
+        <p class="slds-text-heading_medium">WORD: <span class="randomWord">{! v.randomWord}</span> </p>
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="around-small">
+        <p class="slds-text-heading_medium">Moves Left: {! (5 - v.clickCount)} </p>
+      </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout multipleRows="true">
+      <aura:iteration items="{!v.words}" var="itemWord">
+        <lightning:layoutItem padding="around-small" size="{! v.blockSize}">
+          {!itemWord}
+        </lightning:layoutItem>
+      </aura:iteration>
+    </lightning:layout>
+  </div>
+</aura:component>

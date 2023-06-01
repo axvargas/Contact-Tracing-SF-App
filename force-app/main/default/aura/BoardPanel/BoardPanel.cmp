@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+  <aura:attribute name="options" type="List" default="[
+    {'label': 'Easy', 'value': 'easy'},
+    {'label': 'Medium', 'value': 'medium'},
+    {'label': 'Hard', 'value': 'hard'},
+    ]" />
+  <aura:attribute name="selectedGameMode" type="String" />
+
+  <lightning:card title="Word Shuffle">
+    <!-- Bound Expr -->
+    <p>Selected Game Mode: {!v.selectedGameMode}</p>
+    <!-- Unbound Expr -->
+    <p>Selected Game Mode: {#v.selectedGameMode}</p>
+    <lightning:layout horizontalAlign="center">
+      <lightning:layoutItem padding="around-small" size="3">
+        <lightning:combobox aura:id="cmbGameMode" variant="label-hidden" name="gameMode" label="Game Mode"
+          value="{!v.selectedGameMode}" placeholder="Select Game Mode" options="{!v.options}" />
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="around-small">
+        <lightning:button aura:id="btnStartNewGame" variant="brand" label="Start New Game" title="Start New Game"
+          onclick="{! c.handleStartNewGame}" />
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="around-small">
+        <lightning:button aura:id="btnReshuffle" label="Reshuffle" title="Reshuffle" onclick="{! c.handleReshuffle }" />
+      </lightning:layoutItem>
+    </lightning:layout>
+  </lightning:card>
+</aura:component>

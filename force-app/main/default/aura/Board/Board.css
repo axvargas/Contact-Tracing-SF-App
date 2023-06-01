@@ -1,0 +1,9 @@
+.THIS.board {
+  background: #f7fafc;
+  border-radius: 3px;
+  position: relative;
+}
+.THIS .randomWord {
+  text-transform: uppercase;
+  font-weight: bold;
+}

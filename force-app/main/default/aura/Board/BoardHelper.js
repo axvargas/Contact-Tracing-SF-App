@@ -120,5 +120,21 @@
   },
   getRamdonWord: function (words) {
     return words[Math.floor(Math.random() * words.length)];
+  },
+  disableBoard: function (cmp) {
+    cmp.set("v.boardDisabled", true);
+  },
+  enableBoard: function (cmp) {
+    cmp.set("v.boardDisabled", false);
+  },
+  resetBoard: function (cmp) {
+    this.enableBoard(cmp);
+    cmp.set("v.clickCount", 0);
+    cmp.set("v.result", "");
+  },
+  fireResultEvent: function (result) {
+    const resultEvent = $A.get("e.c:ResultApplicationEvent");
+    resultEvent.setParams({ result: result });
+    resultEvent.fire();
   }
 })
